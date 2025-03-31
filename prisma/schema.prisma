@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String  @id @unique
+  email        String
+  firstName    String
+  lastName     String
+  profileImage String?
+  isAdmin      Boolean @default(false)
+  secretCode   Int     @unique
+}
+
+model PaymentDetails {
+  id        String   @id @default(uuid())
+  isPaid    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Sender Information
+  senderName          String
+  senderPhoneNumber   String
+  senderEmail         String? // Optional field
+  senderAddress       String? // Optional field
+  sendingAmountInEuro Float
+  fees                Float
+  exchangeRate        Float
+
+  // Receiver Information
+  receiverName      String
+  bikashPhoneNumber String
+  receiverAddress   String
+
+  receivingAmountInBDT Float
+}
+
