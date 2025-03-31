@@ -28,8 +28,8 @@ import prisma from "@/app/lib/db";
       profileImage: true,
     },
   });
-} */
-
+}
+ */
 export default async function DashboardLayout({
   children,
 }: {
@@ -38,8 +38,8 @@ export default async function DashboardLayout({
   noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-/*   // Get users list to check if the current user is admin
-  const users = await getUsers();
+  // Get users list to check if the current user is admin
+  /* const users = await getUsers();
   const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
   console.log(isAdmin);
   if (!isAdmin) {
