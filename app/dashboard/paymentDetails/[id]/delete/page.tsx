@@ -9,12 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function DeleteRoute({
   params: paramsPromise,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  noStore()
   const params = await paramsPromise;
   return (
     <div className="h-[80vh] w-full flex items-center justify-center">

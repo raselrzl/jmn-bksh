@@ -1,5 +1,6 @@
 "use client";
-
+import { unstable_noStore as noStore } from "next/cache";
+noStore();
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,6 +24,7 @@ import { useActionState } from "react";
 import { SubmitButton } from "@/app/components/SubmitButtons";
 
 export default function PaymentDetailsCreateRoute() {
+  noStore();
   const [lastResult, action] = useActionState(createPaymentDetails, undefined);
   const [form, fields] = useForm({
     lastResult,

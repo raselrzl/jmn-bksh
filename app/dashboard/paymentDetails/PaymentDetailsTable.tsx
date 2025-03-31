@@ -13,6 +13,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
+
 
 interface Payment {
     id: string;
@@ -34,6 +36,7 @@ interface Payment {
   }
 
 export const PaymentDetailsTable: React.FC<PaymentDetailsTableProps> = ({ paymentDetails }) => {
+    noStore();
   const [searchQuery, setSearchQuery] = useState(""); // State for the search query
 
   // Filter payment details based on the phone number

@@ -1,7 +1,7 @@
 import prisma from "@/app/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, EuroIcon, PartyPopper, ShoppingBag, User2 } from "lucide-react";
-
+import { unstable_noStore as noStore } from "next/cache";
 async function getData() {
   const [user, paymentDetails] = await Promise.all([
     prisma.user.findMany({
@@ -26,6 +26,7 @@ async function getData() {
 }
 
 export async function DashboardStats() {
+  noStore()
   const { user, paymentDetails } = await getData();
 
   // Calculate the total revenue from sending amounts and fees

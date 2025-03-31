@@ -8,7 +8,7 @@ import Link from "next/link";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { CircleUser } from "lucide-react";
-
+import { unstable_noStore as noStore } from "next/cache";
 
 // Fetch users from the database
 async function getUsers() {
@@ -25,6 +25,7 @@ async function getUsers() {
 }
 
 export default async function UsersPage() {
+  noStore();
   const users = await getUsers();
 
   const { getUser } = getKindeServerSession();

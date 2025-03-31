@@ -14,7 +14,7 @@ import {
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import prisma from "@/app/lib/db";
-
+import { unstable_noStore as noStore } from "next/cache";
 async function getUsers() {
   return await prisma.user.findMany({
     select: {
@@ -29,6 +29,7 @@ async function getUsers() {
 }
 
 export async function UserNav() {
+  noStore()
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   // Get users list to check if the current user is admin

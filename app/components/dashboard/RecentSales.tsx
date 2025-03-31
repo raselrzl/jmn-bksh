@@ -1,6 +1,6 @@
 import prisma from "@/app/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import { unstable_noStore as noStore } from "next/cache";
 async function getData() {
   const data = await prisma.paymentDetails.findMany({
     select: {
@@ -24,6 +24,7 @@ async function getData() {
 }
 
 export async function RecentSales() {
+  noStore()
   const data = await getData();
   return (
     <Card>
