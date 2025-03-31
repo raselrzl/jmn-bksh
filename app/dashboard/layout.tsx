@@ -15,7 +15,7 @@ import { redirect } from "next/navigation";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
-import prisma from "@/app/lib/db";
+/* import prisma from "@/app/lib/db"; */
 
 /* async function getUsers() {
   return await prisma.user.findMany({
