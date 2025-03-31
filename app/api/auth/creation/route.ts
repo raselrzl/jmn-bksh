@@ -52,7 +52,7 @@ export async function GET() {
   const isDevelopment = process.env.NODE_ENV === "development";
   const redirectUrl = isDevelopment
     ? "http://localhost:3000/dashboard" // Redirect to localhost for development
-    : "https://taha-plum.vercel.app/dashboard"; // Redirect to production URL
+    : "https://jmn-bksh.vercel.app/dashboard"; // Redirect to production URL
 
   return NextResponse.redirect(redirectUrl);
 }
