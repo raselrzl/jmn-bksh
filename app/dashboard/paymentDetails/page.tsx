@@ -5,6 +5,7 @@ import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
 import { PaymentDetailsTable } from "./PaymentDetailsTable";
 
+
 // Fetch payment details from the database
 async function getPaymentDetails() {
   const paymentDetails = await prisma.paymentDetails.findMany({
