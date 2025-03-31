@@ -17,7 +17,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import prisma from "@/app/lib/db";
 
-async function getUsers() {
+/* async function getUsers() {
   return await prisma.user.findMany({
     select: {
       id: true,
@@ -28,7 +28,7 @@ async function getUsers() {
       profileImage: true,
     },
   });
-}
+} */
 
 export default async function DashboardLayout({
   children,
@@ -38,13 +38,13 @@ export default async function DashboardLayout({
   noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  // Get users list to check if the current user is admin
+/*   // Get users list to check if the current user is admin
   const users = await getUsers();
   const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
   console.log(isAdmin);
   if (!isAdmin) {
     return redirect("/"); // If isAdmin is false, redirect to home
-  }
+  } */
 
   return (
     <div className="flex w-full flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">

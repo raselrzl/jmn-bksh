@@ -1,4 +1,3 @@
-/* import { Avatar, AvatarFallback } from "@/components/ui/avatar"; */
 import {
   Card,
   CardContent,
@@ -22,13 +21,11 @@ async function getData() {
     orderBy: {
       createdAt: "desc",
     },
-    take: 7, // or set the time range as per your needs
+    take: 7, 
   });
 
-  // If no data is found, return an empty array
   if (!data) return [];
 
-  // Format the data for the chart (example: daily revenue)
   const chartData = data.map((item) => ({
     date: new Intl.DateTimeFormat("en-US").format(item.createdAt),
     revenue: item.sendingAmountInEuro + item.fees,
