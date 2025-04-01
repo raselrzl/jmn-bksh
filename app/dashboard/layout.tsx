@@ -61,7 +61,7 @@ export default async function DashboardLayout({
             <Button
               variant="secondary"
               size="icon"
-              className="rounded-full mr-5"
+              className="rounded-full mr-5 bg-red-600 cursor-pointer"
             >
               <CircleUser className="w-5 h-5" />
             </Button>
