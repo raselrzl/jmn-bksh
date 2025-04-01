@@ -50,8 +50,8 @@ export const PaymentDetailsTable: React.FC<PaymentDetailsTableProps> = ({ paymen
       {/* Search Bar */}
       <input
         type="text"
-        placeholder="Search by phone number"
-        className="border p-2 mb-4"
+        placeholder="Search by Senders phone number"
+        className="border p-2 mb-4 w-full"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)} // Update search query on input change
       />
