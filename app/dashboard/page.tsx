@@ -10,9 +10,9 @@ import { RecentSales } from "../components/dashboard/RecentSales";
 
 import { unstable_noStore as noStore } from "next/cache";
 import { Chart } from "../components/dashboard/Chart";
-
+import prisma from "@/app/lib/db";
 async function getData() {
-  const data = await prisma?.paymentDetails.findMany({
+  const data = await prisma.paymentDetails.findMany({
     select: {
       createdAt: true,
       sendingAmountInEuro: true,

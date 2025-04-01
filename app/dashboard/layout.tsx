@@ -15,6 +15,20 @@ import { redirect } from "next/navigation";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
+import prisma from "@/app/lib/db";
+
+async function getUsers() {
+  return await prisma.user.findMany({
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      email: true,
+      isAdmin: true,
+      profileImage: true,
+    },
+  });
+}
 
 export default async function DashboardLayout({
   children,
@@ -24,9 +38,15 @@ export default async function DashboardLayout({
   noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  if (!user || user.email !== "rasel6041@gmail.com") {
-    return redirect("/");
+  const users = await getUsers();
+  const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
+  console.log(isAdmin);
+  if (!isAdmin) {
+    return redirect("/"); 
   }
+ /*  if (!user || user.email !== "rasel6041@gmail.com") {
+    return redirect("/");
+  } */
 
   return (
     <div className="flex w-full flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
