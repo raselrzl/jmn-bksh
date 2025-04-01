@@ -2,6 +2,7 @@ import prisma from "@/app/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, EuroIcon, PartyPopper, ShoppingBag, User2 } from "lucide-react";
 import { unstable_noStore as noStore } from "next/cache";
+import Link from "next/link";
 
 async function getData() {
   const [user, paymentDetails] = await Promise.all([
@@ -79,7 +80,7 @@ export async function DashboardStats() {
        <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Sending Value in EUR</CardTitle>
-          <EuroIcon className="h-4 w-4 text-blue-500" />
+          <EuroIcon className=" h-4 w-4 text-green-500" />
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">
@@ -95,6 +96,7 @@ export async function DashboardStats() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Bikash Amount (BDT)</CardTitle>
+          <p className="text-2xl text-green-500">৳</p>
         </CardHeader>
         <CardContent>
           <p className="text-md font-bold">
@@ -108,25 +110,31 @@ export async function DashboardStats() {
 
       {/* Existing Total Transaction Card */}
       <Card>
+      <Link href="/dashboard/paymentDetails">
         <CardHeader className="flex flex-row items-center justify-between pb-2">
+        
           <CardTitle>Total Transaction</CardTitle>
-          <ShoppingBag className="h-4 w-4 text-blue-500" />
+          <ShoppingBag className="h-4 w-4 text-green-500" />
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">{totalSales}</p>
           <p className="text-xs text-muted-foreground">Total Payment Details</p>
         </CardContent>
+        </Link>
       </Card>
        {/* Existing Total Employees Card */}
+       
        <Card>
+       <Link href="/users">
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Employees</CardTitle>
-          <User2 className="h-4 w-4 text-orange-500" />
+          <User2 className="h-4 w-4 text-green-500" />
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">{user.length}</p>
           <p className="text-xs text-muted-foreground">Total Users Signed Up</p>
         </CardContent>
+        </Link>
       </Card>
       
     
@@ -135,7 +143,7 @@ export async function DashboardStats() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Profit</CardTitle>
-          <ShoppingBag className="h-4 w-4 text-blue-500" />
+          <ShoppingBag className="h-4 w-4 text-green-500" />
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">
