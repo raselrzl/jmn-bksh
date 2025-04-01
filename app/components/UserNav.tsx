@@ -52,7 +52,7 @@ export async function UserNav() {
       <DropdownMenuContent align="end" className="w-[200px]">
         {user ? (
           <>
-            {isAdmin && (
+            {isAdmin ? (
               <>
                 {/* <DropdownMenuItem>
                 <Link href="/dashboard/paymentDetails" className="w-full">
@@ -72,12 +72,15 @@ export async function UserNav() {
                   </Link>
                 </DropdownMenuItem>
               </>
+            ) : (
+              <>
+                <DropdownMenuItem className="mt-4 font-bold text-center text-red-800">
+                  <LocateOff className="text-red-800 font-extrabold text-3xl" />{" "}
+                  You are unauthorized, Ask Admin to get access!
+                </DropdownMenuItem>
+              </>
             )}
 
-            <DropdownMenuItem className="mt-4 font-bold text-center text-red-800">
-              <LocateOff className="text-red-800 font-extrabold text-3xl" /> You
-              are unauthorized, Ask Admin to get access!
-            </DropdownMenuItem>
             <DropdownMenuItem className="mt-4 font-bold text-center">
               <LogoutLink className="w-full">Logout</LogoutLink>
             </DropdownMenuItem>
