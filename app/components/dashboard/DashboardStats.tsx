@@ -75,6 +75,37 @@ export async function DashboardStats() {
         </CardContent>
       </Card>
 
+       {/* New Card for Total Sending Value in Euro */}
+       <Card>
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle>Total Sending Value in EUR</CardTitle>
+          <EuroIcon className="h-4 w-4 text-blue-500" />
+        </CardHeader>
+        <CardContent>
+          <p className="text-2xl font-bold">
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "EUR" }).format(
+              parseFloat(formattedTotalSendingValueInEuro)
+            )}
+          </p>
+          <p className="text-xs text-muted-foreground">Based on sending amounts in Euro</p>
+        </CardContent>
+      </Card>
+
+      {/* Total Bikash Amount */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle>Total Bikash Amount (BDT)</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-md font-bold">
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "BDT" }).format(
+              parseFloat(formattedTotalWithoutRevenue)
+            )}
+          </p>
+          <p className="text-xs text-muted-foreground">Excluding revenue</p>
+        </CardContent>
+      </Card>
+
       {/* Existing Total Transaction Card */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -86,6 +117,19 @@ export async function DashboardStats() {
           <p className="text-xs text-muted-foreground">Total Payment Details</p>
         </CardContent>
       </Card>
+       {/* Existing Total Employees Card */}
+       <Card>
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle>Total Employees</CardTitle>
+          <User2 className="h-4 w-4 text-orange-500" />
+        </CardHeader>
+        <CardContent>
+          <p className="text-2xl font-bold">{user.length}</p>
+          <p className="text-xs text-muted-foreground">Total Users Signed Up</p>
+        </CardContent>
+      </Card>
+      
+    
 
       {/* Existing Total Profit Card */}
       <Card>
@@ -101,48 +145,11 @@ export async function DashboardStats() {
         </CardContent>
       </Card>
 
-      {/* Existing Total Employees Card */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle>Total Employees</CardTitle>
-          <User2 className="h-4 w-4 text-orange-500" />
-        </CardHeader>
-        <CardContent>
-          <p className="text-2xl font-bold">{user.length}</p>
-          <p className="text-xs text-muted-foreground">Total Users Signed Up</p>
-        </CardContent>
-      </Card>
+     
 
-      {/* New Card for Total Value Without Revenue */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle>Total Bikash Amount (BDT)</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-md font-bold">
-            {new Intl.NumberFormat("en-US", { style: "currency", currency: "BDT" }).format(
-              parseFloat(formattedTotalWithoutRevenue)
-            )}
-          </p>
-          <p className="text-xs text-muted-foreground">Excluding revenue</p>
-        </CardContent>
-      </Card>
+      
 
-      {/* New Card for Total Sending Value in Euro */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle>Total Sending Value in EUR</CardTitle>
-          <EuroIcon className="h-4 w-4 text-blue-500" />
-        </CardHeader>
-        <CardContent>
-          <p className="text-2xl font-bold">
-            {new Intl.NumberFormat("en-US", { style: "currency", currency: "EUR" }).format(
-              parseFloat(formattedTotalSendingValueInEuro)
-            )}
-          </p>
-          <p className="text-xs text-muted-foreground">Based on sending amounts in Euro</p>
-        </CardContent>
-      </Card>
+     
     </div>
   );
 }

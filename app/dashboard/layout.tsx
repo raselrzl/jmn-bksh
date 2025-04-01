@@ -74,7 +74,7 @@ export default async function DashboardLayout({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/dashboard" className="w-full cursor-pointer">Dashboard</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
@@ -95,7 +95,7 @@ export default async function DashboardLayout({
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild className="mt-4 font-bold">
+            <DropdownMenuItem asChild className="mt-4 font-bold text-center cursor-pointer">
               <LogoutLink>Logout</LogoutLink>
             </DropdownMenuItem>
           </DropdownMenuContent>

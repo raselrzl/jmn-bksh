@@ -64,6 +64,7 @@ export function EditForm({ data }: iAppProps) {
               key={fields.isPaid.key}
               name={fields.isPaid.name}
               defaultChecked={data.isPaid}
+              className="cursor-pointer"
             />
             <p className="text-red-500">{fields.isPaid.errors}</p>
           </div>
