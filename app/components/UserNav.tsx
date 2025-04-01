@@ -5,7 +5,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MenuIcon } from "lucide-react";
+import { Accessibility, Contact2, LocateOff, MenuIcon } from "lucide-react";
 import {
   RegisterLink,
   LoginLink,
@@ -38,7 +38,7 @@ export async function UserNav() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="border-black flex-row rounded-lg border px-2 py-2 lg:px-4 items-center lg:py-2 flex gap-x-3">
+      <DropdownMenuTrigger className="border-black cursor-pointer flex-row rounded-lg border px-2 py-2 lg:px-4 items-center lg:py-2 flex gap-x-3">
        
           <MenuIcon className="text-black font-extrabold w-8 h-8" />
           <img
@@ -75,7 +75,9 @@ export async function UserNav() {
               </>
        )}
 
-            <DropdownMenuSeparator />
+            <DropdownMenuItem className="mt-4 font-bold text-center text-red-800">
+            <LocateOff className="text-red-800 font-extrabold text-3xl"/> You are unauthorized, Ask Admin to get access!
+            </DropdownMenuItem>
             <DropdownMenuItem className="mt-4 font-bold text-center">
               <LogoutLink className="w-full">Logout</LogoutLink>
             </DropdownMenuItem>
