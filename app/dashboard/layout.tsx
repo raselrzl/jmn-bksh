@@ -42,9 +42,9 @@ export default async function DashboardLayout({
   const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
   console.log(isAdmin);
   if (!isAdmin) {
-    return redirect("/"); 
+    return redirect("/");
   }
- /*  if (!user || user.email !== "rasel6041@gmail.com") {
+  /*  if (!user || user.email !== "rasel6041@gmail.com") {
     return redirect("/");
   } */
 
@@ -58,14 +58,14 @@ export default async function DashboardLayout({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-          <img
-            src={
-              user?.picture ??
-              "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-            }
-            alt="Image of the user"
-            className="rounded-full h-8 w-8 text-red-800 cursor-pointer"
-          />
+            <img
+              src={
+                user?.picture ??
+                "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+              }
+              alt="Image of the user"
+              className="rounded-full h-8 w-8 text-red-800 cursor-pointer"
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>{user.given_name}</DropdownMenuLabel>

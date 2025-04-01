@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"; 
+} from "@/components/ui/card";
 import { DashboardStats } from "../components/dashboard/DashboardStats";
 import { RecentSales } from "../components/dashboard/RecentSales";
 
@@ -21,7 +21,7 @@ async function getData() {
     orderBy: {
       createdAt: "desc",
     },
-    take: 7, 
+    take: 7,
   });
 
   if (!data) return [];
@@ -33,7 +33,6 @@ async function getData() {
 
   return chartData;
 }
-
 
 export default async function Dashboard() {
   noStore();

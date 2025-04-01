@@ -70,14 +70,14 @@ export async function createPaymentDetails(
   prevState: unknown,
   formData: FormData
 ) {
-     const { getUser } = getKindeServerSession();
-     const user = await getUser();
-     const users = await getUsers();
-     const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin); 
-     console.log(isAdmin)
-     if (!isAdmin) {
-      return redirect("/");
-    }
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const users = await getUsers();
+  const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
+  console.log(isAdmin);
+  if (!isAdmin) {
+    return redirect("/");
+  }
 
   const submission = parseWithZod(formData, {
     schema: paymentDetailsSchema,
@@ -125,13 +125,13 @@ export async function createPaymentDetails(
 
 export async function deleteProduct(formData: FormData) {
   const { getUser } = getKindeServerSession();
-     const user = await getUser();
-     const users = await getUsers();
-     const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin); 
-     console.log(isAdmin)
-     if (!isAdmin) {
-      return redirect("/");
-    }
+  const user = await getUser();
+  const users = await getUsers();
+  const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
+  console.log(isAdmin);
+  if (!isAdmin) {
+    return redirect("/");
+  }
 
   await prisma.paymentDetails.delete({
     where: {
@@ -144,13 +144,13 @@ export async function deleteProduct(formData: FormData) {
 
 export async function editProduct(prevState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
-     const user = await getUser();
-     const users = await getUsers();
-     const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin); 
-     console.log(isAdmin)
-     if (!isAdmin) {
-      return redirect("/");
-    }
+  const user = await getUser();
+  const users = await getUsers();
+  const isAdmin = users.some((u) => u.email === user?.email && u.isAdmin);
+  console.log(isAdmin);
+  if (!isAdmin) {
+    return redirect("/");
+  }
 
   const submission = parseWithZod(formData, {
     schema: updatepaymentDetailsSchema,
