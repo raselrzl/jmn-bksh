@@ -118,14 +118,16 @@ export default function PaymentDetailsCreateRoute() {
 
       <Card className="mt-5">
         <CardHeader>
-          <CardTitle>Payment Details</CardTitle>
-          <CardDescription>Create Payment Details</CardDescription>
+          <div >
+          <CardTitle className="text-center font-bold">Payment</CardTitle>
+          <CardDescription className="text-center">Create a new Payment Details</CardDescription>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Sender Info Section */}
-            <div className="flex flex-col gap-3">
-              <h2 className="font-semibold text-lg">Sender Info</h2>
+            <div className="flex flex-col gap-3 ">
+              <h2 className="font-extrabold uppercase text-lg text-center">Sender Details</h2>
 
               <div className="flex flex-col gap-3">
                 <Label>Sender Name</Label>
@@ -168,7 +170,7 @@ export default function PaymentDetailsCreateRoute() {
                   placeholder="Sender Address"
                 />
               </div>
-
+              <h2 className="font-extrabold uppercase text-lg text-center">Transection Details</h2>
               <div className="flex flex-col gap-3">
                 <Label>Sending Amount in Euro</Label>
                 <Input
@@ -181,17 +183,7 @@ export default function PaymentDetailsCreateRoute() {
                 <p className="text-red-500">{fields.sendingAmountInEuro.errors}</p>
               </div>
 
-              <div className="flex flex-col gap-3">
-                <Label>Fees</Label>
-                <Input
-                  type="number"
-                  name={fields.fees.name}
-                  defaultValue={fields.fees.initialValue}
-                  placeholder="Fees"
-                  step="any"
-                />
-                <p className="text-red-500">{fields.fees.errors}</p>
-              </div>
+              
 
               <div className="flex flex-col gap-3">
                 <Label>Exchange Rate</Label>
@@ -204,11 +196,22 @@ export default function PaymentDetailsCreateRoute() {
                 />
                 <p className="text-red-500">{fields.exchangeRate.errors}</p>
               </div>
+              <div className="flex flex-col gap-3">
+                <Label>Fees</Label>
+                <Input
+                  type="number"
+                  name={fields.fees.name}
+                  defaultValue={fields.fees.initialValue}
+                  placeholder="Fees"
+                  step="any"
+                />
+                <p className="text-red-500">{fields.fees.errors}</p>
+              </div>
             </div>
 
             {/* Receiver Info Section */}
             <div className="flex flex-col gap-3">
-              <h2 className="font-semibold text-lg">Receiver Info</h2>
+              <h2 className="font-extrabold uppercase text-lg text-center">Receiver Details</h2>
 
               <div className="flex flex-col gap-3">
                 <Label>Receiver Name</Label>
