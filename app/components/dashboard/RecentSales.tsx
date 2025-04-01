@@ -13,6 +13,7 @@ async function getData() {
       senderEmail: true,
       bikashPhoneNumber:true,
       receivingAmountInBDT:true,
+      isPaid:true,
     },
     orderBy: {
       createdAt: "desc",
@@ -41,6 +42,9 @@ export async function RecentSales() {
               <p className="text-sm font-medium">Receiver: {item.receiverName}</p>
               <p className="text-xs text-muted-foreground">Amount: {new Intl.NumberFormat("en-US").format(item.receivingAmountInBDT)} BDT</p>
               <p className="text-xs text-muted-foreground">Receiver: {item.bikashPhoneNumber}</p>
+              <p className={`text-xs font-medium ${item.isPaid ? "text-green-500" : "text-red-500"}`}>
+                {item.isPaid ? "Completed" : "Pending"}
+              </p>
             </div>
           </div>
         ))}

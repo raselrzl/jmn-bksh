@@ -29,6 +29,7 @@ interface Payment {
     isPaid: boolean;
     bikashPhoneNumber: string;
     createdAt: Date;
+    fees: number;
   }
   
   interface PaymentDetailsTableProps {
@@ -74,6 +75,7 @@ export const PaymentDetailsTable: React.FC<PaymentDetailsTableProps> = ({ paymen
               <TableCell>
                 <p>Name: {payment.senderName}</p>
                 <p>Amount(EUR): {payment.sendingAmountInEuro}</p>
+                <p>Fees(EUR): {payment.fees}</p>
                 <p>Email: {payment.senderEmail}</p>
                 <p>Phone: {payment.senderPhoneNumber}</p>
                 <p>Address: {payment.senderAddress}</p>

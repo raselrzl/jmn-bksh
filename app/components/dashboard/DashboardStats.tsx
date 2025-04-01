@@ -2,6 +2,7 @@ import prisma from "@/app/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, EuroIcon, PartyPopper, ShoppingBag, User2 } from "lucide-react";
 import { unstable_noStore as noStore } from "next/cache";
+
 async function getData() {
   const [user, paymentDetails] = await Promise.all([
     prisma.user.findMany({
@@ -26,19 +27,39 @@ async function getData() {
 }
 
 export async function DashboardStats() {
-  noStore()
+  noStore();
   const { user, paymentDetails } = await getData();
+
+  // Calculate totalRevenue as a floating point number
   const totalRevenue = paymentDetails.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.sendingAmountInEuro + currentValue.fees;
   }, 0);
 
+  // Calculate totalProfit (fees)
   const totalProfit = paymentDetails.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.fees;
   }, 0);
+
+  // Calculate total value excluding revenue
+  const totalWithoutRevenue = paymentDetails.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.receivingAmountInBDT;
+  }, 0);
+
+  // Calculate total sending value in Euro
+  const totalSendingValueInEuro = paymentDetails.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.sendingAmountInEuro;
+  }, 0);
+
   const totalSales = paymentDetails.length;
 
+  // Format totalRevenue, totalWithoutRevenue, and totalSendingValueInEuro to always display two decimal places
+  const formattedTotalRevenue = totalRevenue.toFixed(2); // Keep 2 decimal places
+  const formattedTotalWithoutRevenue = totalWithoutRevenue.toFixed(2); // Keep 2 decimal places
+  const formattedTotalSendingValueInEuro = totalSendingValueInEuro.toFixed(2); // Keep 2 decimal places
+
   return (
-    <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+    <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-6">
+      {/* Existing Total Revenue Card */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Revenue</CardTitle>
@@ -46,15 +67,18 @@ export async function DashboardStats() {
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">
-            {new Intl.NumberFormat("en-US").format(totalRevenue)} EUR
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "EUR" }).format(
+              parseFloat(formattedTotalRevenue)
+            )}
           </p>
           <p className="text-xs text-muted-foreground">Based on payment details</p>
         </CardContent>
       </Card>
 
+      {/* Existing Total Transaction Card */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle>Total Transection</CardTitle>
+          <CardTitle>Total Transaction</CardTitle>
           <ShoppingBag className="h-4 w-4 text-blue-500" />
         </CardHeader>
         <CardContent>
@@ -63,6 +87,7 @@ export async function DashboardStats() {
         </CardContent>
       </Card>
 
+      {/* Existing Total Profit Card */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Profit</CardTitle>
@@ -70,12 +95,13 @@ export async function DashboardStats() {
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">
-            {new Intl.NumberFormat("en-US").format(totalProfit)} EUR
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "EUR" }).format(totalProfit)}
           </p>
           <p className="text-xs text-muted-foreground">Based on fees from payment details</p>
         </CardContent>
       </Card>
 
+      {/* Existing Total Employees Card */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle>Total Employees</CardTitle>
@@ -84,6 +110,37 @@ export async function DashboardStats() {
         <CardContent>
           <p className="text-2xl font-bold">{user.length}</p>
           <p className="text-xs text-muted-foreground">Total Users Signed Up</p>
+        </CardContent>
+      </Card>
+
+      {/* New Card for Total Value Without Revenue */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle>Total Bikash Amount (BDT)</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-md font-bold">
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "BDT" }).format(
+              parseFloat(formattedTotalWithoutRevenue)
+            )}
+          </p>
+          <p className="text-xs text-muted-foreground">Excluding revenue</p>
+        </CardContent>
+      </Card>
+
+      {/* New Card for Total Sending Value in Euro */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle>Total Sending Value in EUR</CardTitle>
+          <EuroIcon className="h-4 w-4 text-blue-500" />
+        </CardHeader>
+        <CardContent>
+          <p className="text-2xl font-bold">
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "EUR" }).format(
+              parseFloat(formattedTotalSendingValueInEuro)
+            )}
+          </p>
+          <p className="text-xs text-muted-foreground">Based on sending amounts in Euro</p>
         </CardContent>
       </Card>
     </div>
