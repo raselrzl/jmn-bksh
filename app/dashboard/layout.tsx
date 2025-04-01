@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { CircleUser, MenuIcon } from "lucide-react";
+import { CircleUser, MenuIcon, MenuSquareIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -58,13 +58,14 @@ export default async function DashboardLayout({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="secondary"
-              size="icon"
-              className="rounded-full mr-5 bg-red-600 cursor-pointer"
-            >
-              <CircleUser className="w-5 h-5" />
-            </Button>
+          <img
+            src={
+              user?.picture ??
+              "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+            }
+            alt="Image of the user"
+            className="rounded-full h-8 w-8 text-red-800 cursor-pointer"
+          />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>{user.given_name}</DropdownMenuLabel>

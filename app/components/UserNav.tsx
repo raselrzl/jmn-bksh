@@ -40,14 +40,14 @@ export async function UserNav() {
     <DropdownMenu>
       <DropdownMenuTrigger className="border-black cursor-pointer flex-row rounded-lg border px-2 py-2 lg:px-4 items-center lg:py-2 flex gap-x-3">
        
-          <MenuIcon className="text-black font-extrabold w-8 h-8" />
+          <MenuIcon className="text-red-800 font-extrabold w-8 h-8" />
           <img
             src={
               user?.picture ??
               "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
             }
             alt="Image of the user"
-            className="rounded-full h-8 w-8 "
+            className="rounded-full h-8 w-8 text-red-800"
           />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[200px]">
