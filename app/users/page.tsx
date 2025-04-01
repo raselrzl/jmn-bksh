@@ -45,14 +45,15 @@ export default async function UsersPage() {
         </nav>
 
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="secondary"
-              size="icon"
-              className="rounded-full mr-5"
-            >
-              <CircleUser className="w-5 h-5" />
-            </Button>
+          <DropdownMenuTrigger asChild className="cursor-pointer">
+          <img
+          src={
+            user?.picture ??
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+          }
+          alt="Image of the user"
+          className="rounded-full h-8 w-8 text-red-800"
+        />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>{user.given_name}</DropdownMenuLabel>
@@ -61,7 +62,7 @@ export default async function UsersPage() {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/dashboard" className="cursor-pointer">Dashboard</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
@@ -82,7 +83,7 @@ export default async function UsersPage() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild className="mt-4 font-bold">
+            <DropdownMenuItem asChild className="mt-4 font-bold cursor-pointer text-center">
               <LogoutLink>Logout</LogoutLink>
             </DropdownMenuItem>
           </DropdownMenuContent>
