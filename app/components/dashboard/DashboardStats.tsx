@@ -28,18 +28,13 @@ async function getData() {
 export async function DashboardStats() {
   noStore()
   const { user, paymentDetails } = await getData();
-
-  // Calculate the total revenue from sending amounts and fees
   const totalRevenue = paymentDetails.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.sendingAmountInEuro + currentValue.fees;
   }, 0);
 
-  // Calculate total profit (sum of fees)
   const totalProfit = paymentDetails.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.fees;
   }, 0);
-
-  // Calculate total sales (count of payment details)
   const totalSales = paymentDetails.length;
 
   return (
