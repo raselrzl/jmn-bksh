@@ -116,10 +116,10 @@ export const PaymentDetailsTable: React.FC<PaymentDetailsTableProps> = ({ paymen
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href={`/dashboard/paymentDetails/${payment.id}`}>Update Payment Status</Link>
+                      <Link href={`/dashboard/paymentDetails/${payment.id}`} className="cursor-pointer">Update Payment Status</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href={`/dashboard/paymentDetails/${payment.id}/delete`}>Delete</Link>
+                      <Link href={`/dashboard/paymentDetails/${payment.id}/delete`} className="cursor-pointer">Delete</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
